@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grantify Legal Landing</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .hero-section {
+      background: url('assets/hero-bg.jpg') center center/cover no-repeat;
+      color: white;
+      height: 100vh;
+      position: relative;
+    }
+
+    .overlay {
+      background: rgba(0, 33, 71, 0.2);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      margin-top: 100px;
+    }
+
+    .form-container {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .features span {
+      margin: 0 10px;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    .navbar-custom {
+      z-index: 3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+    }
+
+    .navbar .btn-quote {
+      background-color: #FF4500;
+      color: white;
+      font-weight: 600;
+    }
+
+    .navbar .navbar-brand img {
+      height: 40px;
+    }
+    .btn-danger1{
+        background-color: #FF4500;
+        color: #fff;
+    }
+    .text-primary{
+        color: #FF4500 !important;
+    }
+    .col1{
+      color: #2C3F69;
+    }
+
+    .play-button {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: transform 0.2s ease;
+}
+.play-button:hover {
+  transform: scale(1.1);
+  background-color: #fff;
+}
+
+.service-box {
+    min-height: 280px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .service-box:hover {
+    box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.05);
+    background-color: #f9f9f9;
+  }
+
+  @media (max-width: 767.98px) {
+    .service-box {
+      min-height: auto;
+    }
+  }
+
+  .empower-section {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+}
+.background-image {
+  background-image: url('assets/sec4-bg.jpg'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.overlay-content {
+  background-color: rgba(13, 35, 69, 0.95); /* Blue overlay */
+  position: relative;
+  z-index: 2;
+  width: 30%;
+  margin-left: 120px;
+  min-height: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (max-width: 768px) {
+  .overlay-content {
+    width: 100%;
+  }
+}
+
+.tab-section {
+      background-color: #f9f9f9;
+      padding: 60px 0;
+    }
+    .tab-image {
+      max-width: 70%;
+      border-radius: 10px;
+    }
+    .nav-tabs .nav-link.active {
+      color: #e74c3c;
+      border-color: transparent transparent #e74c3c transparent;
+      font-weight: bold;
+    }
+    .nav-tabs .nav-link {
+      border: none;
+      color: #888;
+    }
+
+    .testimonial-section {
+      background: url('assets/sec9-bg.png') center bottom no-repeat;
+      background-color: #eaeaea;
+      background-size: cover;
+      padding: 80px 0;
+    }
+
+    .testimonial-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .testimonial-heading h2 {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-heading p {
+      color: #888;
+      font-size: 16px;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px 25px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      height: 100%;
+      text-align: center;
+    }
+
+    .testimonial-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-card h6 {
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #2c3e50;
+    }
+
+    .testimonial-card small {
+      color: #888;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .testimonial-carousel-controls {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .testimonial-carousel-controls button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #888;
+      margin: 0 5px;
+    }
+
+    .testimonial-carousel-controls button.active {
+      color: #2c3e50;
+    }
+
+    .consulting-section {
+      padding: 80px 0;
+      background-color: #fff;
+    }
+
+    .consulting-section h6 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .consulting-section h2 {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+
+    .consulting-section ul {
+      padding-left: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .consulting-section ul li {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .consulting-section .btn-orange {
+      background-color: #ff3c00;
+      color: white;
+      font-weight: 600;
+      border-radius: 4px;
+      padding: 10px 20px;
+      border: none;
+    }
+
+    .consulting-image {
+      max-width: 40%;
+      height: auto;
+    }
+
+    .why-choose-section {
+      background-image: url('assets/footer-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .why-choose-section h2 {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .why-choose-section p {
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+
+    .stats-card {
+      background-color: white;
+      color: #1a2640;
+      border-radius: 12px;
+      padding: 30px 20px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .stats-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stats-icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .stats-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ff3c00;
+    }
+
+    .stats-label {
+      font-size: 15px;
+      color: #333;
+    }
+
+    .footer-section {
+  background: #0e1d3432 url('assets/footer-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+.b1{
+  color: #2C3F69;
+}
+
+
+  </style>
+</head>
+<body>
+
+<!-- Header/Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom px-4 py-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="./">
+      <!-- <img src="your-logo.png" alt="Logo" /> -->
+       <h3 class="col1 fw-bold">GrantifyLegal</h3>
+    </a>
+    <div class="ms-auto">
+      <a href="#" class="btn btn-quote"> GET A QUOTE</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section d-flex align-items-center justify-content-center text-center">
+  <div class="overlay"></div>
+
+  <div class="container hero-content">
+    <h6 class="text-uppercase mb-2">Access Government Legal Grants with GrantifyLegal</h6>
+    <h1 class="fw-bold display-5 mb-3">Start Securing the Financial Support You Deserve Today</h1>
+    <p class="mb-5 mx-auto" style="max-width: 720px;">
+      Discover a wide range of legal government grant programs designed to support individuals, startups, and non-profits.
+      Whether you're seeking funds for legal aid, small business compliance, or social justice initiatives—we guide you through every step of the grant application process.
+    </p>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <form class="form-container row g-2 text-start">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Enter Your Name*" required />
+          </div>
+          <div class="col-md-4">
+            <input type="email" class="form-control" placeholder="Enter Your Email*" required />
+          </div>
+          <div class="col-md-3">
+            <select class="form-select" required>
+              <option value="">Grant Type</option>
+              <option>Legal Aid</option>
+              <option>Startup Support</option>
+              <option>Non-profit</option>
+            </select>
+          </div>
+          <div class="col-md-1 d-grid">
+            <button type="submit" class="btn btn-danger1">SEND</button>
+          </div>
+        </form>
+        <div class="features mt-4 text-white small text-center">
+          <span> <img src="assets/design-elements/Component 3.png" alt=""> Government Approved</span>
+          <span> <img src="assets/design-elements/Component 3.png" alt=""> No Hidden Costs</span>
+          <span> <img src="assets/design-elements/Component 3.png" alt=""> Secure Online Form</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 about-agency-section">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      
+      <!-- Left: Image with play button -->
+      <div class="col-md-6 position-relative text-center mb-4 mb-md-0">
+        <div class="position-relative d-inline-block">
+          <img src="assets/sec2.png" alt="Legal Consultation" class="img-fluid rounded" style="max-height: 500px;">
+          <button class="play-button position-absolute top-50 start-50 translate-middle btn btn-light rounded-circle shadow" onclick="playVideo()">
+            <i class="bi bi-play-fill fs-3 text-danger"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: Text content -->
+      <div class="col-md-6">
+        <p class="text-uppercase text-muted small fw-bold mb-4">About Agency</p>
+        <h3 class="fw-bold mb-5 col1">Expert Legal Grant Consultations<br>You Can Trust</h3>
+        <ul class="list-unstyled text-muted">
+          <li class="mb-3">
+            <i class="bi bi-check-circle-fill text-success me-2 mb-3"></i>
+            Personalized consultation for all types of government-funded legal aid and support
+          </li>
+          <li class="mb-3">
+            <i class="bi bi-check-circle-fill text-success me-2 mb-3"></i>
+            Guidance tailored to your purpose: personal legal aid, business licensing, or NGO compliance
+          </li>
+          <li>
+            <i class="bi bi-check-circle-fill text-success me-2 mb-3"></i>
+            Support available both online and offline with complete confidentiality and transparency
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold col1">Our Legal Grant Support Services</h2>
+      <p class="text-muted">
+        Explore various government-backed legal grants tailored to your needs. We simplify<br>
+        the application process, ensure compliance, and help you secure financial assistance confidently.
+      </p>
+    </div>
+
+    <!-- 6 Grid Boxes -->
+    <div class="row g-0 border b1 border-1">
+      <!-- Box 1 -->
+      <div class="col-md-4 border-end border-bottom p-4">
+        <h6 class="fw-bold col1">Legal Aid Grants</h6>
+        <p class="text-muted small mb-2">
+          Get help with applying for government-funded legal assistance for low-income individuals facing civil or criminal matters
+        </p>
+        <a href="#" class="text-muted text-uppercase fw-semibold small">Read More &rsaquo;</a>
+      </div>
+
+      <!-- Box 2 -->
+      <div class="col-md-4 border-end border-bottom p-4">
+        <h6 class="fw-bold col1">Small Business Legal Grants</h6>
+        <p class="text-muted small mb-2">
+          Access grants for legal compliance, IP registration, and business documentation for eligible entrepreneurs and MSMEs
+        </p>
+        <a href="#" class="text-muted text-uppercase fw-semibold small">Read More &rsaquo;</a>
+      </div>
+
+      <!-- Box 3 -->
+      <div class="col-md-4 border-bottom p-4">
+        <h6 class="fw-bold col1">Non-Profit Legal Support</h6>
+        <p class="text-muted small mb-2">
+          We guide NGOs in applying for legal grants focused on advocacy, human rights, and community justice
+        </p>
+        <a href="#" class="text-muted text-uppercase fw-semibold small">Read More &rsaquo;</a>
+      </div>
+
+      <!-- Box 4 -->
+      <div class="col-md-4 border-end p-4">
+        <h6 class="fw-bold col1">Women & Minority Legal Grants</h6>
+        <p class="text-muted small mb-2">
+          Specialized grants for women needing legal assistance or compliance help
+        </p>
+        <a href="#" class="text-muted text-uppercase fw-semibold small">Read More &rsaquo;</a>
+      </div>
+
+      <!-- Box 5 -->
+      <div class="col-md-4 border-end p-4">
+        <h6 class="fw-bold col1">Compliance & Regulatory Aid</h6>
+        <p class="text-muted small mb-2">
+          Get assistance in applying for grants that help meet mandatory legal requirements for your industry
+        </p>
+        <a href="#" class="text-muted text-uppercase fw-semibold small">Read More &rsaquo;</a>
+      </div>
+
+      <!-- Box 6 -->
+      <div class="col-md-4 p-4">
+        <h6 class="fw-bold col1">Legal Literacy & Training Grants</h6>
+        <p class="text-muted small mb-2">
+          Support for individuals offering legal awareness programs through schemes
+        </p>
+        <a href="#" class="text-muted text-uppercase fw-semibold small">Read More &rsaquo;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="empower-section position-relative text-white">
+  <!-- Background image covers the entire section -->
+  <div class="background-image"></div>
+
+  <!-- Blue overlay card aligned left -->
+  <div class="overlay-content d-flex align-items-center">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-10 ">
+          <p class="text-uppercase small fw-semibold mb-2">Funding the Future</p>
+          <h2 class="fw-bold mb-4" style="line-height: 1.3;">
+            Empower Your Startup - Apply for Government Legal Grants Today
+          </h2>
+          <p class="mb-4 small">
+            Whether you’re launching a new business or scaling a growing startup, government-backed legal grants can help you cover essential legal services like company registration, licensing, compliance, and IP protection. Our team simplifies the process and connects you with the right funding opportunities so you can build with confidence.
+          </p>
+          <a href="#" class="btn btn-outline-light px-4 py-2 fw-semibold">
+            DISCOVER GRANTS
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tab-section">
+  <div class="container">
+    <ul class="nav nav-tabs mb-4 justify-content-center" id="grantTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="approved-tab" data-bs-toggle="tab" data-bs-target="#approved" type="button" role="tab">Government Approved</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="cost-tab" data-bs-toggle="tab" data-bs-target="#cost" type="button" role="tab">No Hidden Costs</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="easy-tab" data-bs-toggle="tab" data-bs-target="#easy" type="button" role="tab">Fast, Easy & Secure</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="grantTabContent">
+      <!-- Tab 1 -->
+      <div class="tab-pane fade show active" id="approved" role="tabpanel">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <img src="assets/sec8.png" alt="Approved" class="tab-image">
+          </div>
+          <div class="col-md-6">
+            <h6 class="text-uppercase text-muted mb-4"><b>Getting a Legal Grant</b></h6>
+            <h2 class="mb-3 col1">We Make the Legal Grant Process Simple and Fast</h2>
+            <p>Our platform is designed to help you apply for verified government legal grants with zero hassle.
+              From verifying your eligibility to preparing necessary documents — we walk with you every step of the way, saving your time and effort.</p>
+            <p class="col1"><strong>Government-certified, professionally guided, and always transparent</strong></p>
+            <ul>
+              <li>Get personalized support for the right grant category</li>
+              <li>100% secure process — no hidden charges, ever</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2 -->
+      <div class="tab-pane fade" id="cost" role="tabpanel">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <img src="assets/sec8.png" alt="No Hidden Costs" class="tab-image">
+          </div>
+          <div class="col-md-6">
+            <h6 class="text-uppercase text-muted mb-4"><b>Transparent Pricing</b></h6>
+            <h2 class="mb-3 col1">We Value Honesty — No Hidden Fees</h2>
+            <p>Everything is upfront — no surprise costs or charges. We ensure financial clarity while helping you secure your grant.</p>
+            <ul>
+              <li>Clear breakdown of all processes</li>
+              <li>Zero surprise fees at any stage</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3 -->
+      <div class="tab-pane fade" id="easy" role="tabpanel">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <img src="assets/sec8.png" alt="Fast and Secure" class="tab-image">
+          </div>
+          <div class="col-md-6">
+            <h6 class="text-uppercase text-muted"><b>Efficiency Matters</b></h6>
+            <h2 class="mb-3 col1">Fast, Easy, and Secure Grant Application</h2>
+            <p>Designed for speed and simplicity, our platform keeps your data safe while getting your grant application processed quickly.</p>
+            <ul>
+              <li>Quick processing timelines</li>
+              <li>Full data privacy and encrypted submissions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-section">
+  <div class="container">
+    <div class="testimonial-heading">
+      <h2 class="col1">Our Success Stories…</h2>
+      <p>Real people. Real grants. Real impact.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Evelyn W.">
+          <h6>Evelyn W.</h6>
+          <small>(Women Grant)</small>
+          <p>“Thanks to the GrantSure team, I received full guidance to secure a women-led startup legal grant. I never thought paperwork could be this smooth and stress-free!”</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Leslie Serpas">
+          <h6>Leslie Serpas</h6>
+          <small>(NGO Grant)</small>
+          <p>“I run a non-profit and needed help with government documentation. Their legal grant consultation saved us both time and compliance risks. Highly recommended!”</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Dan Hodges">
+          <h6>Dan Hodges</h6>
+          <small>(Startup Grant)</small>
+          <p>“From registration to compliance, they guided me through the grant application and legal steps needed to get approved. I received my grant in under 30 days!”</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional: Controls -->
+    <div class="testimonial-carousel-controls">
+      <button class="active">●</button>
+      <button>●</button>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose-section">
+  <div class="container">
+    <h2>Why Choose GrantifyLegal?</h2>
+    <p>Thousands trust us to unlock government-approved legal funding — here’s why:</p>
+    <div class="row justify-content-center g-4">
+      <!-- Card 1 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="stats-card">
+          <div class="stats-icon">🎓</div>
+          <div class="stats-number">760+</div>
+          <div class="stats-label">Grant Applications</div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="stats-card">
+          <div class="stats-icon">🏛️</div>
+          <div class="stats-number">118</div>
+          <div class="stats-label">Schemes Supported</div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="stats-card">
+          <div class="stats-icon">🌐</div>
+          <div class="stats-number">76</div>
+          <div class="stats-label">Covered Across US</div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="stats-card">
+          <div class="stats-icon">💼</div>
+          <div class="stats-number">898</div>
+          <div class="stats-label">NGOs & Individuals Helped</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="consulting-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Text Column -->
+       <div class="col-md-1">
+        
+      </div>
+      <div class="col-md-5">
+        <h6>EXPERT LEGAL GRANT CONSULTANTS</h6>
+        <h2>Trusted Legal Grant Consulting Since 2017</h2>
+        <ul>
+          <li>With over 8 years of experience, we’ve helped 2000+ clients secure verified legal grants across sectors like startups, NGOs, and individual legal aid</li>
+          <li>Our advisors stay updated with the latest government schemes to ensure faster approval and full compliance with policies</li>
+        </ul>
+        <button class="btn btn-orange">GET A QUOTE</button>
+      </div>
+
+      <!-- Image Column -->
+      <div class="col-md-5 text-center">
+        <img src="assets/sec10_fin.png" alt="Consultant Image" class="consulting-image">
+      </div>
+      <div class="col-md-1">
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer-section text-white pt-5 pb-4" style="background-color: #0e1d34; position: relative;">
+  <div class="container mb-3 mt-3">
+    <div class="row justify-content-between align-items-start mb-5 ">
+      <!-- Left: About -->
+      <div class="col-md-4">
+        <h5 class="fw-bold">GrantifyLegal</h5>
+        <p class="text-light small">
+          GrantSure is a government-verified legal grant consulting platform helping individuals, startups,
+          and NGOs secure legal aid through official schemes.
+          From eligibility checks to application support,
+          we simplify the journey to getting funded—ethically and effectively.
+        </p>
+      </div>
+      <div class="col-md-4">
+
+      </div>
+      <!-- Right: Subscription -->
+      <div class="col-md-4">
+        <h6 class="fw-semibold mb-3">Stay Always In Touch</h6>
+        <form class="d-flex flex-column flex-sm-row gap-2">
+          <input type="email" class="form-control" placeholder="Your email address" required>
+          <button type="submit" class="btn btn-danger1 px-4">SUBSCRIBE</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom Links -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center border-top border-secondary pt-3">
+      <p class="mb-2 mb-md-0 small">
+        © Copyright <strong><a href="./" class="text-primary" style="text-decoration: none;">GrantifyLegal</a> 2025</strong>. All Rights Reserved
+      </p>
+      <div class="footer-links small">
+        <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+        <a href="#" class="text-white text-decoration-none me-3">Terms & Conditions</a>
+        <!-- <a href="#" class="text-white text-decoration-none">Cookies</a> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button onclick="scrollToTop()" class="btn btn-outline-light position-absolute bottom-0 end-0 m-3" title="Back to top">
+    ↑
+  </button>
+</footer>
+
+<!-- Scroll to Top Script -->
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
