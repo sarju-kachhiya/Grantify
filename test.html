@@ -1,105 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Why Choose GrantifyLegal?</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You | GrantifyLegal</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Brand styles (tuned to the look of your landing page) -->
   <style>
-    .why-choose-section {
-      background-image: url('assets/footer-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 80px 0;
-      position: relative;
+    :root{
+      --brand-navy:#0f2942;          /* hero navy */
+      --brand-navy-2:#17395f;        /* deeper navy */
+      --brand-soft:#edf3fb;          /* pale background */
+      --brand-accent:#ff6b35;        /* orange accent */
+      --brand-green:#28c76f;         /* success green */
+      --radius-2xl:1.25rem;
+    }
+    body{
+      background: linear-gradient(180deg, var(--brand-navy) 0%, var(--brand-navy-2) 55%, #0d2238 100%);
+      color:#0b1b2b;
+    }
+    .page-wrap{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    /* Top banner */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      color:#fff;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-30% -10% auto -10%;
+      height:120%;
+      background:
+        radial-gradient(60rem 60rem at -10% 10%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(40rem 40rem at 110% -10%, rgba(255,255,255,.05), transparent 60%),
+        radial-gradient(30rem 30rem at 30% 130%, rgba(255,255,255,.04), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-card{
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius-2xl);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
     }
 
-    .why-choose-section h2 {
-      font-weight: 700;
-      margin-bottom: 10px;
+    /* Checkmark badge */
+    .tick-wrap{
+      width:88px; height:88px;
+      border-radius:50%;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg, #2fd086, #0eb565);
+      box-shadow:0 10px 30px rgba(15, 196, 115, .35);
+      margin-inline:auto;
+    }
+    .tick{
+      width:42px; height:42px; position:relative;
+    }
+    .tick:before, .tick:after{
+      content:"";
+      position:absolute;
+      background:#fff;
+      border-radius:6px;
+    }
+    .tick:before{ /* short arm */
+      width:10px; height:28px; left:11px; top:10px; transform:rotate(45deg) scaleY(0);
+      transform-origin: bottom left;
+      animation: arm1 .6s .1s ease-out forwards;
+    }
+    .tick:after{ /* long arm */
+      width:10px; height:52px; left:24px; top:-2px; transform:rotate(-45deg) scaleY(0);
+      transform-origin: top left;
+      animation: arm2 .6s .35s ease-out forwards;
+    }
+    @keyframes arm1{to{transform:rotate(45deg) scaleY(1);}}
+    @keyframes arm2{to{transform:rotate(-45deg) scaleY(1);}}
+
+    /* Content sections */
+    .section{
+      background:#fff;
+      border-radius: var(--radius-2xl);
+      box-shadow: 0 10px 30px rgba(5, 20, 35, .10);
+    }
+    .icon-bullet{
+      width:42px; height:42px; border-radius:10px;
+      display:grid; place-items:center; flex:0 0 auto;
+      background: #eef6ff; color: var(--brand-navy-2);
+      border:1px solid #d8e7ff;
+      font-weight:700;
+    }
+    .mini-stat{
+      border-radius: 18px;
+      background:#f7fafc;
+      border:1px solid #e7eef6;
     }
 
-    .why-choose-section p {
-      color: #ccc;
-      margin-bottom: 40px;
+    /* Redirect bar at the bottom */
+    .redirect-bar{
+      position:sticky; bottom:0; z-index:10;
+      background:rgba(12, 27, 46, .92);
+      color:#fff;
+      border-top:1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(6px);
+    }
+    .progress{
+      height:.6rem; background: rgba(255,255,255,.15);
+    }
+    .progress-bar{
+      background: linear-gradient(135deg, var(--brand-accent), #ff8b5e);
     }
 
-    .stats-card {
-      background-color: white;
-      color: #1a2640;
-      border-radius: 12px;
-      padding: 30px 20px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+    /* Buttons */
+    .btn-accent{
+      background: var(--brand-accent);
+      border:0; color:#0a0a0a; font-weight:700;
     }
+    .btn-accent:hover{ filter:brightness(.95); }
 
-    .stats-card:hover {
-      transform: translateY(-5px);
+    .footer{
+      color:#c8d6e5;
+      font-size:.9rem;
     }
-
-    .stats-icon {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    .stats-number {
-      font-size: 28px;
-      font-weight: 700;
-      color: #ff3c00;
-    }
-
-    .stats-label {
-      font-size: 15px;
-      color: #333;
+    a.nav-link, a.link-light{
+      text-decoration:none;
     }
   </style>
 </head>
 <body>
+  <div class="page-wrap">
 
-<section class="why-choose-section">
-  <div class="container">
-    <h2>Why Choose GrantifyLegal?</h2>
-    <p>Thousands trust us to unlock government-approved legal funding — here’s why:</p>
-    <div class="row justify-content-center g-4">
-      <!-- Card 1 -->
-      <div class="col-md-3 col-sm-6">
-        <div class="stats-card">
-          <div class="stats-icon">🎓</div>
-          <div class="stats-number">760+</div>
-          <div class="stats-label">Grant Applications</div>
+    <!-- HERO / SUCCESS -->
+    <header class="hero py-5 py-lg-6">
+      <div class="container position-relative">
+        <nav class="d-flex justify-content-between align-items-center mb-4">
+          <a href="#" class="d-inline-flex align-items-center text-white text-decoration-none">
+            <span class="fw-bold fs-4">Grantify<span class="text-warning">Legal</span></span>
+          </a>
+          <a href="#" class="btn btn-sm btn-outline-light rounded-pill px-3">Get a Quote</a>
+        </nav>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="hero-card p-4 p-md-5 text-center">
+              <div class="tick-wrap mb-3"><div class="tick"></div></div>
+              <h1 class="fw-bold mb-2">Thank You! Your Request Has Been Received.</h1>
+              <p class="lead mb-0">
+                We’ve logged your details and a grant specialist will contact you shortly to guide
+                you through the next steps toward verified, government‑approved legal grants.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- Card 2 -->
-      <div class="col-md-3 col-sm-6">
-        <div class="stats-card">
-          <div class="stats-icon">🏛️</div>
-          <div class="stats-number">118</div>
-          <div class="stats-label">Schemes Supported</div>
+    </header>
+
+    <!-- NEXT STEPS + SIDECARD -->
+    <main class="flex-grow-1 py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <section class="section p-4 p-md-5">
+              <h2 class="h4 fw-bold mb-3">What Happens Next</h2>
+
+              <div class="d-flex gap-3 align-items-start pb-3 border-bottom mb-3">
+                <div class="icon-bullet">1</div>
+                <div>
+                  <h3 class="h6 fw-bold mb-1">Application Review</h3>
+                  <p class="mb-0">Our team verifies your details and matches you with relevant legal grant programs tailored to your profile (startups, SMEs, NGOs, or individual legal aid).</p>
+                </div>
+              </div>
+              <div class="d-flex gap-3 align-items-start pb-3 border-bottom mb-3">
+                <div class="icon-bullet">2</div>
+                <div>
+                  <h3 class="h6 fw-bold mb-1">Document Checklist</h3>
+                  <p class="mb-0">You’ll receive a secure link to upload only what’s needed—fast, compliant and confidential.</p>
+                </div>
+              </div>
+              <div class="d-flex gap-3 align-items-start">
+                <div class="icon-bullet">3</div>
+                <div>
+                  <h3 class="h6 fw-bold mb-1">Consultation & Submission</h3>
+                  <p class="mb-0">A specialist will schedule a call and help submit your grant application for quick, verified processing.</p>
+                </div>
+              </div>
+
+              <!-- Quick actions -->
+              <div class="row g-3 mt-4">
+                <div class="col-sm-6">
+                  <a href="#" class="btn btn-accent w-100 rounded-pill py-2">Back to Homepage</a>
+                </div>
+                <div class="col-sm-6">
+                  <a href="mailto:support@grantifylegal.example" class="btn btn-outline-dark w-100 rounded-pill py-2">Contact Support</a>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="col-lg-4">
+            <aside class="section p-4 p-md-4 h-100">
+              <h2 class="h6 fw-bold mb-3">Submission Summary</h2>
+              <div class="mini-stat p-3 mb-3">
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary small">Reference ID</span>
+                  <span id="refId" class="fw-semibold">GL‑</span>
+                </div>
+              </div>
+              <div class="mini-stat p-3 mb-3">
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary small">Status</span>
+                  <span class="fw-semibold text-success">Received</span>
+                </div>
+              </div>
+              <div class="mini-stat p-3">
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary small">Response Time</span>
+                  <span class="fw-semibold">Under 24 hours</span>
+                </div>
+              </div>
+
+              <hr class="my-4">
+
+              <p class="small text-secondary mb-2">Need immediate help?</p>
+              <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-success-subtle text-success border border-success-subtle">Live Chat</span>
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Email</span>
+                <span class="badge bg-warning-subtle text-warning border border-warning-subtle">Call Back</span>
+              </div>
+            </aside>
+          </div>
         </div>
       </div>
-      <!-- Card 3 -->
-      <div class="col-md-3 col-sm-6">
-        <div class="stats-card">
-          <div class="stats-icon">🌐</div>
-          <div class="stats-number">76</div>
-          <div class="stats-label">Covered Across US</div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer py-4">
+      <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+        <div>&copy; <span id="year"></span> <strong>GrantifyLegal</strong>. All Rights Reserved.</div>
+        <div class="d-flex gap-3 mt-2 mt-md-0">
+          <a href="#" class="link-light">Privacy Policy</a>
+          <a href="#" class="link-light">Terms &amp; Conditions</a>
         </div>
       </div>
-      <!-- Card 4 -->
-      <div class="col-md-3 col-sm-6">
-        <div class="stats-card">
-          <div class="stats-icon">💼</div>
-          <div class="stats-number">898</div>
-          <div class="stats-label">NGOs & Individuals Helped</div>
+    </footer>
+
+    <!-- Redirect bar -->
+    <div class="redirect-bar">
+      <div class="container py-3">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
+          <p class="mb-0">
+            You will be redirected in
+            <strong><span id="seconds">10</span> seconds</strong>…
+          </p>
+          <div class="progress w-100 w-md-50" role="progressbar" aria-label="Redirect progress" aria-valuemin="0" aria-valuemax="10">
+            <div id="bar" class="progress-bar" style="width: 100%"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Page JS: reference id + countdown + redirect -->
+  <script>
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightweight pseudo reference id for confirmation card
+    (function makeRef(){
+      const rnd = Math.random().toString(36).slice(2, 8).toUpperCase();
+      const stamp = new Date().toISOString().slice(2,10).replace(/-/g,'');
+      document.getElementById('refId').textContent = `GL-${stamp}-${rnd}`;
+    })();
+
+    // Countdown + redirect
+    (function redirectCountdown(){
+      const total = 10;                 // seconds
+      const target = "https://example.com";
+      const secEl = document.getElementById('seconds');
+      const bar = document.getElementById('bar');
+      let remaining = total;
+
+      const tick = setInterval(() => {
+        remaining--;
+        secEl.textContent = remaining;
+        bar.style.width = (remaining / total * 100) + '%';
+
+        if (remaining <= 0) {
+          clearInterval(tick);
+          window.location.href = target;
+        }
+      }, 1000);
+    })();
+  </script>
 </body>
 </html>
